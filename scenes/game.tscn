@@ -4,9 +4,21 @@
 [ext_resource type="Script" uid="uid://bmc1is18txv18" path="res://scripts/game.gd" id="1_yqjtg"]
 
 [node name="Game" type="Node"]
+process_mode = 3
 script = ExtResource("1_yqjtg")
 
 [node name="World" parent="." instance=ExtResource("1_uwrxv")]
+process_mode = 1
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UILayer" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="UI" type="Control" parent="UILayer"]
 unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+bus = &"Music"

@@ -6,3 +6,4 @@
 script = ExtResource("1_nnsk1")
 
 [node name="YSortRoot" type="Node2D" parent="."]
+y_sort_enabled = true

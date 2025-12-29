@@ -17,13 +17,23 @@ config/icon="res://assets/prototyping/the_holy_icon_svg/icon.svg"
 [autoload]
 
 Global="*res://scripts/globals.gd"
+SignalBus="*res://scripts/signal_bus.gd"
+
+[debug]
+
+gdscript/warnings/untyped_declaration=1
 
 [file_customization]
 
 folder_colors={
 "res://addons/": "gray",
 "res://assets/": "red",
+"res://assets/prototyping/the_holy_icon_svg/": "blue",
 "res://resources/": "orange",
 "res://scenes/": "teal",
 "res://scripts/": "purple"
 }
+
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
