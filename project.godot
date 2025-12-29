@@ -12,4 +12,18 @@ config_version=5
 
 config/name="Mini starter project"
 config/features=PackedStringArray("4.5", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://assets/prototyping/the_holy_icon_svg/icon.svg"
+
+[autoload]
+
+Global="*res://scripts/globals.gd"
+
+[file_customization]
+
+folder_colors={
+"res://addons/": "gray",
+"res://assets/": "red",
+"res://resources/": "orange",
+"res://scenes/": "teal",
+"res://scripts/": "purple"
+}
