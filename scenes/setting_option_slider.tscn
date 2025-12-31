@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dow4xr6lrn17h"]
+
+[ext_resource type="PackedScene" uid="uid://ciadcsmqo1ad4" path="res://scenes/setting_option.tscn" id="1_fy8m5"]
+[ext_resource type="Script" uid="uid://cqwqq74p15isp" path="res://scripts/setting_option_slider.gd" id="2_akbjb"]
+
+[node name="SettingOption" instance=ExtResource("1_fy8m5")]
+script = ExtResource("2_akbjb")
+
+[node name="HSlider" type="HSlider" parent="Panel/MarginContainer/ContentContainer" index="1"]
+unique_name_in_owner = true
+layout_mode = 2

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlenc7d6hsspa"]
+
+[ext_resource type="Script" uid="uid://by4oq5lhqw8bb" path="res://scripts/ui_container.gd" id="1_w83ab"]
+
+[node name="UILayer" type="CanvasLayer"]
+process_mode = 3
+
+[node name="UI" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_w83ab")
