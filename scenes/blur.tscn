@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://djir5ox0f8e2d"]
+
+[ext_resource type="Shader" uid="uid://ctusfd1k6on4k" path="res://assets/shaders/blur.gdshader" id="1_2dfy7"]
+[ext_resource type="Script" uid="uid://vgd7cohwt3c0" path="res://scripts/blur.gd" id="1_yyivn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qycw7"]
+shader = ExtResource("1_2dfy7")
+shader_parameter/lod = 0.0
+
+[node name="Blur" type="ColorRect"]
+material = SubResource("ShaderMaterial_qycw7")
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_yyivn")
+animation_ = true
+animation_speed_multi = 0.30000000000000004

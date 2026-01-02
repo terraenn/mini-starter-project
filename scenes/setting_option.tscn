@@ -1,15 +1,14 @@
 [gd_scene load_steps=2 format=3 uid="uid://ciadcsmqo1ad4"]
 
-[ext_resource type="Script" uid="uid://dqkb0xmso6orf" path="res://scripts/setting_option.gd" id="1_m0isk"]
+[ext_resource type="StyleBox" uid="uid://cpefuxun4nvtc" path="res://resources/inner_stylebox.tres" id="1_m0isk"]
 
-[node name="SettingOption" type="Control" node_paths=PackedStringArray("setting_name")]
+[node name="SettingOption" type="Control"]
+custom_minimum_size = Vector2(150, 75)
 layout_mode = 3
 anchor_right = 0.4435764
 anchor_bottom = 0.125
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_m0isk")
-setting_name = NodePath("Panel/MarginContainer/ContentContainer/Name")
 metadata/_edit_use_anchors_ = true
 
 [node name="Panel" type="Panel" parent="."]
@@ -19,6 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = ExtResource("1_m0isk")
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 1
@@ -27,9 +27,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 5
+theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
+theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 5
 
 [node name="ContentContainer" type="HBoxContainer" parent="Panel/MarginContainer"]
@@ -37,4 +37,9 @@ layout_mode = 2
 
 [node name="Name" type="Label" parent="Panel/MarginContainer/ContentContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+horizontal_alignment = 2
+vertical_alignment = 1

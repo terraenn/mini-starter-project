@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://o4iyb1y5krmi"]
+
+[ext_resource type="PackedScene" uid="uid://ciadcsmqo1ad4" path="res://scenes/setting_option.tscn" id="1_2et3g"]
+[ext_resource type="Script" uid="uid://wx4nvjviqhl1" path="res://scripts/setting_option_checkbox.gd" id="2_3wt0g"]
+
+[node name="SettingOptionCheckbox" instance=ExtResource("1_2et3g")]
+script = ExtResource("2_3wt0g")
+
+[node name="Name" parent="Panel/MarginContainer/ContentContainer" index="0"]
+size_flags_horizontal = 0
+horizontal_alignment = 1
+
+[node name="CheckBox" type="CheckBox" parent="Panel/MarginContainer/ContentContainer" index="1"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4

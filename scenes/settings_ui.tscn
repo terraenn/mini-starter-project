@@ -1,13 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://xxqir7ic260e"]
+[gd_scene load_steps=8 format=3 uid="uid://xxqir7ic260e"]
 
 [ext_resource type="Script" uid="uid://cq7t6p4llncpi" path="res://scripts/settings_ui.gd" id="1_b5ayt"]
+[ext_resource type="PackedScene" uid="uid://dow4xr6lrn17h" path="res://scenes/setting_option_slider.tscn" id="2_8r1oi"]
+[ext_resource type="PackedScene" uid="uid://djir5ox0f8e2d" path="res://scenes/blur.tscn" id="2_gmdvq"]
+[ext_resource type="StyleBox" uid="uid://ycseowvtgfyk" path="res://resources/outer_stylebox.tres" id="3_5653c"]
+[ext_resource type="PackedScene" uid="uid://o4iyb1y5krmi" path="res://scenes/setting_option_checkbox.tscn" id="4_k6eqp"]
+[ext_resource type="Script" uid="uid://chmofj7tpx66m" path="res://scripts/bb_code_label.gd" id="4_pla86"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_atg2c"]
-font_size = 32
-outline_size = 2
-shadow_size = 3
-shadow_color = Color(0, 0, 0, 1)
-shadow_offset = Vector2(1, 2)
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_5653c"]
+color = Color(1, 1, 1, 1)
+thickness = 3
 
 [node name="SettingsUI" type="Control"]
 layout_mode = 3
@@ -18,7 +20,18 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_b5ayt")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Blur" parent="." instance=ExtResource("2_gmdvq")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OuterPanel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.27256945
@@ -27,9 +40,10 @@ anchor_right = 0.7274306
 anchor_bottom = 0.80709875
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = ExtResource("3_5653c")
 metadata/_edit_use_anchors_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="OuterPanel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -37,34 +51,63 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="OuterPanel/MarginContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="OuterPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/margin_top = 15
-theme_override_constants/margin_bottom = 5
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 0
 
-[node name="RichTextLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="OuterPanel/MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 2
-text = "Settings"
-label_settings = SubResource("LabelSettings_atg2c")
-horizontal_alignment = 1
-vertical_alignment = 2
 
-[node name="HSeparator" type="HSeparator" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="BBCodeLabel" type="RichTextLabel" parent="OuterPanel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[wave][font_size=32]Settings"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_pla86")
+metadata/_custom_type_script = "uid://chmofj7tpx66m"
+
+[node name="HSeparator" type="HSeparator" parent="OuterPanel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(250, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_styles/separator = SubResource("StyleBoxLine_5653c")
 
-[node name="MarginContainer2" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="OuterPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 30
 
-[node name="SettingsOptions" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer/MarginContainer2"]
+[node name="SettingsOptions" type="VBoxContainer" parent="OuterPanel/MarginContainer/VBoxContainer/MarginContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/separation = 8
+
+[node name="Music" parent="OuterPanel/MarginContainer/VBoxContainer/MarginContainer2/SettingsOptions" instance=ExtResource("2_8r1oi")]
+layout_mode = 2
+size_flags_vertical = 3
+display_name = "Music"
+internal_name = "music"
+def_value = 50.0
+
+[node name="SFX" parent="OuterPanel/MarginContainer/VBoxContainer/MarginContainer2/SettingsOptions" instance=ExtResource("2_8r1oi")]
+layout_mode = 2
+display_name = "SFX"
+internal_name = "sfx"
+def_value = 50.0
+
+[node name="Screenshake" parent="OuterPanel/MarginContainer/VBoxContainer/MarginContainer2/SettingsOptions" instance=ExtResource("4_k6eqp")]
+layout_mode = 2
+display_name = "Screenshake"
+internal_name = "screenshake"

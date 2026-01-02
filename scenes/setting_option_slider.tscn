@@ -3,9 +3,15 @@
 [ext_resource type="PackedScene" uid="uid://ciadcsmqo1ad4" path="res://scenes/setting_option.tscn" id="1_fy8m5"]
 [ext_resource type="Script" uid="uid://cqwqq74p15isp" path="res://scripts/setting_option_slider.gd" id="2_akbjb"]
 
-[node name="SettingOption" instance=ExtResource("1_fy8m5")]
+[node name="SettingOptionSlider" instance=ExtResource("1_fy8m5")]
 script = ExtResource("2_akbjb")
+
+[node name="Name" parent="Panel/MarginContainer/ContentContainer" index="0"]
+size_flags_horizontal = 0
+horizontal_alignment = 0
 
 [node name="HSlider" type="HSlider" parent="Panel/MarginContainer/ContentContainer" index="1"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1

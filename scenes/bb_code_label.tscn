@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2fr6xvxn3yog"]
+
+[ext_resource type="Script" uid="uid://chmofj7tpx66m" path="res://scripts/bb_code_label.gd" id="1_5jxw3"]
+
+[node name="BBCodeLabel" type="RichTextLabel"]
+offset_right = 40.0
+offset_bottom = 40.0
+bbcode_enabled = true
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_5jxw3")
