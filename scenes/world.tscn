@@ -11,6 +11,7 @@ y_sort_enabled = true
 
 [node name="Test" type="Sprite2D" parent="YSortRoot"]
 unique_name_in_owner = true
+position = Vector2(-408, 0)
 texture = ExtResource("2_rwgxs")
 
 [node name="Camera2D" type="Camera2D" parent="."]

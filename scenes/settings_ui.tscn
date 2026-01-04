@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://xxqir7ic260e"]
+[gd_scene load_steps=11 format=3 uid="uid://xxqir7ic260e"]
 
 [ext_resource type="Script" uid="uid://cq7t6p4llncpi" path="res://scripts/settings_ui.gd" id="1_b5ayt"]
 [ext_resource type="PackedScene" uid="uid://dow4xr6lrn17h" path="res://scenes/setting_option_slider.tscn" id="2_8r1oi"]
@@ -6,6 +6,9 @@
 [ext_resource type="StyleBox" uid="uid://ycseowvtgfyk" path="res://resources/outer_stylebox.tres" id="3_5653c"]
 [ext_resource type="PackedScene" uid="uid://o4iyb1y5krmi" path="res://scenes/setting_option_checkbox.tscn" id="4_k6eqp"]
 [ext_resource type="Script" uid="uid://chmofj7tpx66m" path="res://scripts/bb_code_label.gd" id="4_pla86"]
+[ext_resource type="Script" uid="uid://7008s3wf3ael" path="res://addons/pulser.gd" id="5_inf46"]
+[ext_resource type="StyleBox" uid="uid://dgq1cp68dqbwh" path="res://resources/button_color.tres" id="7_63k7b"]
+[ext_resource type="StyleBox" uid="uid://bky210tvp8xq4" path="res://resources/button_pressed.tres" id="8_npu2v"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_5653c"]
 color = Color(1, 1, 1, 1)
@@ -34,14 +37,17 @@ grow_vertical = 2
 [node name="OuterPanel" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.27256945
-anchor_top = 0.1929012
-anchor_right = 0.7274306
-anchor_bottom = 0.80709875
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -230.0
+offset_top = -236.0
+offset_right = 230.0
+offset_bottom = 236.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("3_5653c")
-metadata/_edit_use_anchors_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="OuterPanel"]
 layout_mode = 1
@@ -58,14 +64,26 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/margin_top = 20
+theme_override_constants/margin_top = 30
 theme_override_constants/margin_bottom = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="OuterPanel/MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="BBCodeLabel" type="RichTextLabel" parent="OuterPanel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="OuterPanel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OuterPanel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = -4
+
+[node name="BBCodeLabel" type="RichTextLabel" parent="OuterPanel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 1.9546744)
+layout_mode = 2
+size_flags_vertical = 4
 bbcode_enabled = true
 text = "[wave][font_size=32]Settings"
 fit_content = true
@@ -74,6 +92,26 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("4_pla86")
 metadata/_custom_type_script = "uid://chmofj7tpx66m"
+
+[node name="BBCodeLabel2" type="RichTextLabel" parent="OuterPanel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0.7501077)
+layout_mode = 2
+size_flags_vertical = 0
+bbcode_enabled = true
+text = " [i]- paused -"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("4_pla86")
+metadata/_custom_type_script = "uid://chmofj7tpx66m"
+
+[node name="Pulser" type="Node" parent="OuterPanel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/BBCodeLabel2"]
+script = ExtResource("5_inf46")
+pulse_from = 0.6
+pulse_speed = 3.0
+preset = 0
+metadata/_custom_type_script = "uid://7008s3wf3ael"
 
 [node name="HSeparator" type="HSeparator" parent="OuterPanel/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(250, 0)
@@ -88,26 +126,59 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 30
 
-[node name="SettingsOptions" type="VBoxContainer" parent="OuterPanel/MarginContainer/VBoxContainer/MarginContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="OuterPanel/MarginContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="SettingsOptions" type="VBoxContainer" parent="OuterPanel/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 8
 
-[node name="Music" parent="OuterPanel/MarginContainer/VBoxContainer/MarginContainer2/SettingsOptions" instance=ExtResource("2_8r1oi")]
+[node name="Music" parent="OuterPanel/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/SettingsOptions" instance=ExtResource("2_8r1oi")]
 layout_mode = 2
 size_flags_vertical = 3
 display_name = "Music"
 internal_name = "music"
 def_value = 50.0
 
-[node name="SFX" parent="OuterPanel/MarginContainer/VBoxContainer/MarginContainer2/SettingsOptions" instance=ExtResource("2_8r1oi")]
+[node name="SFX" parent="OuterPanel/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/SettingsOptions" instance=ExtResource("2_8r1oi")]
 layout_mode = 2
 display_name = "SFX"
 internal_name = "sfx"
 def_value = 50.0
 
-[node name="Screenshake" parent="OuterPanel/MarginContainer/VBoxContainer/MarginContainer2/SettingsOptions" instance=ExtResource("4_k6eqp")]
+[node name="Screenshake" parent="OuterPanel/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/SettingsOptions" instance=ExtResource("4_k6eqp")]
 layout_mode = 2
 display_name = "Screenshake"
 internal_name = "screenshake"
+
+[node name="MarginContainer" type="MarginContainer" parent="OuterPanel/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Close" type="Button" parent="OuterPanel/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.9554969)
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = ExtResource("7_63k7b")
+theme_override_styles/pressed = ExtResource("8_npu2v")
+theme_override_styles/hover = ExtResource("7_63k7b")
+text = "Close"
+
+[node name="ClosePulser" type="Node" parent="OuterPanel/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/MarginContainer/Close"]
+unique_name_in_owner = true
+script = ExtResource("5_inf46")
+pulse_from = 0.8
+pulse_speed = 3.0
+preset = 0
+metadata/_custom_type_script = "uid://7008s3wf3ael"

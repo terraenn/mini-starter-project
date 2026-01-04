@@ -16,11 +16,16 @@ func _enter_tree() -> void:
 	Global.game = self
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("open_or_close_settings"):
+	var screenshot : bool = event.is_action_pressed("screenshot")
+	if event.is_action_pressed("open_or_close_settings") or screenshot:
 		if settings:
 			settings.disappear()
 			unpause()
 		else:
+			if screenshot:
+				pause() # pause early
+				await get_tree().create_timer(0.2).timeout # for easier screenshotting for itch.io page
+				# (settings won't cover screen)
 			settings = settings_scene.instantiate()
 			Global.ui.add_child(settings)
 			settings.appear()

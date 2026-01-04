@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://o4iyb1y5krmi"]
+[gd_scene load_steps=4 format=3 uid="uid://o4iyb1y5krmi"]
 
 [ext_resource type="PackedScene" uid="uid://ciadcsmqo1ad4" path="res://scenes/setting_option.tscn" id="1_2et3g"]
 [ext_resource type="Script" uid="uid://wx4nvjviqhl1" path="res://scripts/setting_option_checkbox.gd" id="2_3wt0g"]
+[ext_resource type="StyleBox" uid="uid://bky210tvp8xq4" path="res://resources/button_pressed.tres" id="3_33sdn"]
 
 [node name="SettingOptionCheckbox" instance=ExtResource("1_2et3g")]
 script = ExtResource("2_3wt0g")
@@ -10,8 +11,31 @@ script = ExtResource("2_3wt0g")
 size_flags_horizontal = 0
 horizontal_alignment = 1
 
-[node name="CheckBox" type="CheckBox" parent="Panel/MarginContainer/ContentContainer" index="1"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/ContentContainer" index="1"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="CheckBox" type="CheckBox" parent="Panel/MarginContainer/ContentContainer/MarginContainer" index="0"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
+
+[node name="Panel" type="Panel" parent="Panel/MarginContainer/ContentContainer/MarginContainer/CheckBox" index="0"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.083333336
+anchor_top = -0.083333336
+anchor_right = 1.0833334
+anchor_bottom = 1.0833334
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme_override_styles/panel = ExtResource("3_33sdn")
+metadata/_edit_use_anchors_ = true
